@@ -5,6 +5,7 @@ const { body, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs')
 const Jwt_secrtet = "sk-programmer"
 const jwt = require('jsonwebtoken')
+const fetchuser = require('../middlewares/fetchuser')
 
 router.post('/createbloger',
      // using the express validator as the middleware for creating the blogere
@@ -106,8 +107,23 @@ router.post('/login',
           } catch (error) {
                res.status(500).send("Some Error occured")
           }
-     })
+     }
 
+)
+
+// get bloger information 
+router.post('/getbloger', fetchuser, async (req, res) => {
+     try {
+          // fetch user is a middleware which is used to take the id form the authtoken
+          const { Bloger } = allModels;
+          let blogerid = req.bloger.id;
+          const bloger = await Bloger.findById(blogerid).select("-password")
+          res.send(bloger)
+     } catch (error) {
+          console.log(error.message)
+          res.status(500).send("Some Error occured")
+     }
+})
 
 
 module.exports = router;
