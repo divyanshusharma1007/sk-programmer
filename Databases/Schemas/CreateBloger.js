@@ -1,5 +1,9 @@
 const mongoose = require('mongoose')
 const createBloger = new mongoose.Schema({
+     image: {
+          type: String,
+          default: "defaultimage.webp"
+     },
      name: {
           type: String,
           required: true,
