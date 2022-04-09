@@ -5,9 +5,9 @@ const { body, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs')
 const Jwt_secrtet = "sk-programmer"
 const jwt = require('jsonwebtoken')
-const fetchbloger = require('../middlewares/fetchbloger')
+const fetchuser = require('../middlewares/fetchuser')
 
-router.post('/createbloger',
+router.post('/createuser',
      // using the express validator as the middleware for creating the blogere
      [
           body("name", "Enter a valid name").isLength({ min: 5, max: 20 }),
@@ -17,7 +17,7 @@ router.post('/createbloger',
      ],
      async (req, res) => {
           // requiring modules form the module
-          const { Bloger } = allModels;
+          const { User, Bloger } = allModels;
           // validating the module
           const errors = validationResult(req);
 
@@ -29,9 +29,10 @@ router.post('/createbloger',
           else {
                try {
                     // checking that the the bloger exists or not
-                    let bloger = await Bloger.findOne({ email: req.body.email }, { contactNumber: req.body.contactNumber });
-                    if (bloger) {
-                         return res.status(400).json({ status: false, error: "bloger already exists" })
+                    let user = await User.findOne({ email: req.body.email }, { contactNumber: req.body.contactNumber });
+                    let userasbloger = await Bloger.findOne({ email: req.body.email })
+                    if (user || userasbloger) {
+                         return res.status(400).json({ status: false, error: "user already exists or exist as bloger" })
                     }
                     const salt = await bcrypt.genSalt(12);
                     const secondrypassword = await bcrypt.hash(req.body.password, salt);
@@ -41,16 +42,14 @@ router.post('/createbloger',
                          name: req.body.name,
                          email: req.body.email,
                          contactNumber: req.body.contactNumber,
-                         gitHub: req.body.gitHub,
-                         programmingLanguage: req.body.programmingLanguage,
                          password: secondrypassword,
                     }
                     // saving the data
-                    bloger = await Bloger.create(bodyData);
+                    user = await User.create(bodyData);
                     // making the id
                     const data = {
-                         bloger: {
-                              id: bloger.id
+                         user: {
+                              id: user.id
                          }
                     }
                     const authtoken = jwt.sign(data, Jwt_secrtet)
@@ -77,7 +76,7 @@ router.post('/login',
 
      async (req, res) => {
           // requiring the models
-          const { Bloger } = allModels;
+          const { User } = allModels;
 
 
           const errors = validationResult(req)
@@ -89,21 +88,21 @@ router.post('/login',
 
           try {
 
-               let bloger = await Bloger.findOne({ email })
-               if (!bloger) {
+               let user = await User.findOne({ email })
+               if (!user) {
                     return res.status(400).json({ login: false, error: "Please try to log in with the correct creditianatials" })
                }
                // compaing the password password with the decrypt password
 
-               const passwordcompare = await bcrypt.compare(password, bloger.password);
+               const passwordcompare = await bcrypt.compare(password, user.password);
                // checking that the password is created or not
                if (!passwordcompare) {
                     return res.status(400).json({ login: false, error: "Please try to log in with the correct creditianatials" })
                }
                // creating the auth token with the id of bloger
                const data = {
-                    bloger: {
-                         id: bloger.id
+                    user: {
+                         id: user.id
                     }
                }
 
@@ -121,13 +120,13 @@ router.post('/login',
 
 
 
-router.post('/getbloger', fetchbloger, async (req, res) => {
+router.post('/getuser', fetchuser, async (req, res) => {
      try {
+          const { User } = allModels;
           // fetch user is a middleware which is used to take the id form the authtoken
-          const { Bloger } = allModels;
-          let blogerid = req.bloger.id;
-          const bloger = await Bloger.findById(blogerid).select("-password")
-          res.send({ status: true, bloger })
+          let userid = req.user.id;
+          const user = await User.findById(userid).select("-password")
+          res.send({ status: true, user })
      } catch (error) {
 
           res.status(500).send({ status: false, error: "Some Error occured" })
@@ -140,13 +139,10 @@ router.post('/getbloger', fetchbloger, async (req, res) => {
 
 
 
-router.post("/updatebloger", fetchbloger, async (req, res) => {
+router.post("/updateuser", fetchuser, async (req, res) => {
      try {
-          const { Bloger } = allModels;
-          let blogerid = req.bloger.id;
-          console.log(blogerid, "bloger id")
-          console.log(req.body, "body of request")
-
+          const { User } = allModels;
+          let userid = req.user.id;
           const salt = await bcrypt.genSalt(12);
           const secondrypassword = await bcrypt.hash(req.body.password, salt);
 
@@ -154,16 +150,14 @@ router.post("/updatebloger", fetchbloger, async (req, res) => {
           const bodyData = {
                image: req.body.image,
                name: req.body.name,
-               gitHub: req.body.gitHub,
-               programmingLanguage: req.body.programmingLanguage,
                password: secondrypassword,
           }
           //    this is used to find update the bloger
-          const bloger = await Bloger.findByIdAndUpdate(blogerid, bodyData);
+          const user = await User.findByIdAndUpdate(userid, bodyData);
           // this is used to find the new bloger
-          const newBloger = await Bloger.findById(blogerid);
-          if (bloger) {
-               res.status(200).send({ update: true, newBloger });
+          const newUser = await User.findById(userid);
+          if (user) {
+               res.status(200).send({ update: true, newUser });
           }
           else {
                res.status(500).send({ update: false, data: "some error occured" });

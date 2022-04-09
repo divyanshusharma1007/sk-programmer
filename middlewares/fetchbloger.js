@@ -9,7 +9,8 @@ fetchusers = (req, res, next) => {
      try {
           // this is used to verify hte user 
           const data = jwt.verify(token, Jwt_secrtet)
-          req.user = data.user;
+
+          req.bloger = data.bloger;
           next();
      } catch (error) {
           res.status(401).send({ error: "please authenticate using a valid token" })

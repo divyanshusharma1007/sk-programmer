@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
 const Bloger = mongoose.model('Bloger', require('./Schemas/CreateBloger'))
+const User = mongoose.model('User', require('./Schemas/CreateUser'))
 
-console.log(Bloger)
-module.exports = { Bloger };
+module.exports = { Bloger, User };
