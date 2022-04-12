@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
 const Bloger = mongoose.model('Bloger', require('./Schemas/CreateBloger'))
 const User = mongoose.model('User', require('./Schemas/CreateUser'))
+const Authority = mongoose.model('Authority', require('./Schemas/CreateAuthority'))
+// const Authority = mongoose.model('Authority', require('./Schemas/Authority'))
 
-module.exports = { Bloger, User };
+module.exports = { Bloger, User, Authority };
