@@ -11,7 +11,7 @@ app.use("/api/auth/user", require("./Routes/UserAuth"))
 app.use("/api/auth/authority", require("./Routes/Authority"))
 // authority need an update
 
-
+app.use("/api/blog/", require("./Routes/Blogs/BlogerBlogs"))
 // app.use("/api/auth/authority", require("./Routes/AuthorityAuth"))
 
 app.listen(port, () => { console.log(`sk-programmerBackend is listning at ${port}`) })
