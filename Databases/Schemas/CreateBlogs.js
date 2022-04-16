@@ -2,6 +2,13 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose;
 const commentSchema = require('./CreateComment');
 
+const likeSchema = mongoose.Schema({
+     userid: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'User',
+          required: true
+     }
+})
 const Blogs = new Schema({
      title: {
           type: String,
@@ -29,8 +36,7 @@ const Blogs = new Schema({
           required: true,
      },
      likes: {
-          type: Number,
-          default: 0,
+          type: [],
      },
      blogerid: {
           type: mongoose.Schema.Types.ObjectId,

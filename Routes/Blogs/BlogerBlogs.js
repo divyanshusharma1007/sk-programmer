@@ -43,7 +43,6 @@ router.post('/create', [
           res.status(400).send("some error occured");
      }
 })
-
 router.post("/update", [
      body('title', "Enter a valid title").isLength({ min: 6, max: 50 }),
      body('programmingLanguage', "Enter The programming language"),
@@ -51,6 +50,13 @@ router.post("/update", [
      body('authorName', "Enter the author name").isLength({ max: 15 }),
 ], fetchbloger, async (req, res) => {
      const { Blogs } = allModels;
+
+     const errors = validationResult(req);
+     // checkin the validation
+     if (!errors.isEmpty()) {
+          return res.status(400).json({ errors: errors.array() });
+     }
+
      try {
           const bodyData = {
                title: req.body.title,
@@ -62,10 +68,13 @@ router.post("/update", [
           }
           const updatedBlog = await Blogs.findByIdAndUpdate(req.body._id, bodyData);
           const blog = await Blogs.findById(req.body._id);
+          console.log(blog);
           res.send(blog);
      }
      catch (err) { res.status(400).send(err) }
 })
+
+
 
 router.get('/myblogs', fetchbloger, async (req, res) => {
      const { Blogs } = allModels;
