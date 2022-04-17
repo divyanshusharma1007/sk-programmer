@@ -14,6 +14,7 @@ app.use("/api/auth/authority", require("./Routes/Authority"))
 app.use("/api/blog/", require("./Routes/Blogs/BlogerBlogs"))
 app.use("/api/blog/admin", require("./Routes/Blogs/AuthorityBlogs"))
 app.use("/api/blog/user", require("./Routes/Blogs/UserBlogs"))
+app.use("/api/all/", require("./Routes/Blogs/AllBlogs"))
 // app.use("/api/auth/authority", require("./Routes/AuthorityAuth"))
 
 app.listen(port, () => { console.log(`sk-programmerBackend is listning at ${port}`) })
