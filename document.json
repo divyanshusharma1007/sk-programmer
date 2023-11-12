@@ -1,0 +1,391 @@
+
+[
+
+
+
+  {
+    "controller_description": "Create a new user.",
+    "request": {
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/user/createuser",
+      "data": {
+        "name": "divyam rathod",
+        "email": "divyam@gmail.com",
+        "password": "divyam@A",
+        "contactNumber": 8839452511,
+        "image": "#2e76ec81-731b-4171-b2da-c1ce56c95af9#"
+      }
+    },
+    "description": "This request is used to create a new user in the system. It expects a JSON payload with user details, including name, email, password, contact number, and an optional image reference.",
+    "data_description": {
+      "name": "The full name of the user.",
+      "email": "The email address of the user.",
+      "password": "The user's password (must meet security requirements).",
+      "contactNumber": "The user's contact number.",
+      "image": "An optional image reference for the user's profile picture."
+    }
+  },
+  {
+    "controller_description": "User Login",
+    "request": {
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/user/login",
+      "data": {
+        "email": "divyam@gmail.com",
+        "password": "divyam@A"
+      }
+    },
+    "description": "This request is used for user authentication and login. It expects a JSON payload with the user's email and password.",
+    "data_description": {
+      "email": "The email address of the user for authentication.",
+      "password": "The user's password for authentication."
+    }
+  },
+  {
+    "controller_description": "Fetch User Profile",
+    "request": {
+      "method": "GET",
+      "url": "http://localhost:3000/api/auth/user/fetch_me",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjU0OTg4NDcxMjJmYmJiNDAwZjJiMDNhIn0sImlhdCI6MTY5OTMxODc4N30.yCM8eq9U-wJ1KlFZthmdnb39Fp0b8dzfxOuRu8CxnLM"
+      }
+    },
+    "description": "This request is used to fetch the user's profile information. It requires an authentication token (JWT) in the 'auth-token' header to identify the user and retrieve their profile data."
+  },
+  {
+    "controller_description": "Update User Profile",
+    "request": {
+      "method": "PUT",
+      "url": "http://localhost:3000/api/auth/user/update",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2vyIjp7ImlkIjoiNjU0OTg4NDcxMjJmYmJiNDAwZjJiMDNhIn0sImlhdCI6MTY5OTMxODc4N30.yCM8eq9U-wJ1KlFZthmdnb39Fp0b8dzfxOuRu8CxnLM"
+      },
+      "data": {
+        "name": "sonam rathod",
+        "email": "divyam@gmail.com",
+        "password": "divyam@A",
+        "contactNumber": 8839452511,
+        "image": "#2e76ec81-731b-4171-b2da-c1ce56c95af9#"
+      }
+    },
+    "description": "This request is used to update the user's profile information. It requires an authentication token (JWT) in the 'auth-token' header to identify the user and update their profile data. The request payload contains the updated user information, including name, email, password, contact number, and an optional image reference."
+  },
+  {
+    "controller_description": "Create a New Blogger",
+    "request": {
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/bloger/create-bloger",
+      "data": {
+        "name": "divya",
+        "email": "divy@gmail.com",
+        "password": "your_password",
+        "contactNumber": "1234567890",
+        "image": "your_image_url",
+        "gitHub": "your_github_username",
+        "programmingLanguage": "JavaScript"
+      }
+    },
+    "description": "This request is used to create a new blogger in the system. It expects a JSON payload with blogger details, including name, email, password, contact number, image URL, GitHub username, and preferred programming language."
+  },
+  {
+    "controller_description": "Blogger Login",
+    "request": {
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/bloger/login",
+      "data": {
+        "email": "divy@gmail.com",
+        "password": "your_password"
+      }
+    },
+    "description": "This request is used for blogger authentication and login. It expects a JSON payload with the blogger's email and password for authentication."
+  },
+  {
+    "controller_description": "Get Blogger Profile",
+    "request": {
+      "method": "GET",
+      "url": "http://localhost:3000/api/auth/bloger/get-bloger",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibG9nZXIiOnsiaWQiOiI2NTRhZDNkYzMyODhkMTEzZj11YfSwiaWF0IjoxNjk5NDAyODI5fQ.whxjEIaryByJwzrrWLTmQ8zbEPI5UVAOdY8aJEp5nQs"
+      }
+    },
+    "description": "This request is used to fetch the blogger's profile information. It requires an authentication token (JWT) in the 'auth-token' header to identify the blogger and retrieve their profile data."
+  },
+  {
+    "controller_description": "Update Blogger Profile",
+    "request": {
+      "method": "PUT",
+      "url": "http://localhost:3000/api/auth/bloger/update-bloger",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibG9nZXIiOnsiaWQiOiI2NTRhZDNkYzMyODhkMTEzZj11YfSwiaWF0IjoxNjk5NDAyODI5fQ.whxjEIaryByJwzrrWLTmQ8zbEPI5UVAOdY8aJEp5nQs"
+      },
+      "data": {
+        "name": "sonam",
+        "email": "divy@gmail.com",
+        "password": "your_password",
+        "contactNumber": "1234567890",
+        "image": "your_image_url",
+        "gitHub": "your_github_username",
+        "programmingLanguage": "JavaScript"
+      }
+    },
+    "description": "This request is used to update the blogger's profile information. It requires an authentication token (JWT) in the 'auth-token' header to identify the blogger and update their profile data. The request payload contains the updated blogger information, including name, email, password, contact number, image URL, GitHub username, and preferred programming language."
+  },
+  {
+    "controller_description": "Create Blog",
+    "request": {
+      "method": "POST",
+      "url": "http://localhost:3000/api/blog/create-blog",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibG9nZXIiOnsiaWQiOiI2NTRhZDNkYzMyODhkMTEzZj11YfSwiaWF0IjoxNjk5NDAyODI5fQ.whxjEIaryByJwzrrWLTmQ8zbEPI5UVAOdY8aJEp5nQs"
+      },
+      "data": {
+        "title": "Sample Blog Title -3",
+        "programmingLanguage": "JavaScript",
+        "image": "https://example.com/sample-image.jpg",
+        "description": "This is a sample blog description. It should be at least 15 characters  hehehe lon heg.",
+        "hashtags": ["programming", "coding", "sample"],
+        "authorName": "John Doe",
+        "bloger": {
+          "id": "654ad3dc3288d113f11c417a"
+        }
+      }
+    },
+    "description": "This request is used to create a new blog post. It requires an authentication token (JWT) in the 'auth-token' header to identify the blogger creating the blog. The request payload includes the blog title, programming language, image URL, description, hashtags, author's name, and a reference to the blogger creating the blog."
+  },
+  {
+    "controller_description": "Update Blog",
+    "request": {
+      "method": "PUT",
+      "url": "http://localhost:3000/api/blog/update-blog",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibG9nZXIiOnsiaWQiOiI2NTRhZDNkYzMyODhkMTEzZj11YfSwiaWF0IjoxNjk5NDAyODI5fQ.whxjEIaryByJwzrrWLTmQ8zbEPI5UVAOdY8aJEp5nQs"
+      },
+      "data": {
+        "_id": "654ad7993a6a7a2e3f0feabf",
+        "title": "Updated Blog Title",
+        "programmingLanguage": "JavaScript",
+        "image": "blog_image.jpg",
+        "description": "This is an updated blog description. Lorem ipsum...",
+        "hashtags": ["programming", "webdev"],
+        "authorName": "John Doe"
+      }
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to update a blog post. It includes an authentication token (JWT) in the 'auth-token' header to verify the user's identity and a JSON payload containing the updated blog information, including the blog's ID, title, programming language, image, description, hashtags, and author's name."
+  },
+  {
+    "controller_description": "Fetch My Blogs",
+    "request": {
+      "method": "GET",
+      "url": "http://localhost:3000/api/blog/my-blogs?page=2&perPage=2",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJibG9nZXIiOnsiaWQiOiI2NTRhZDNkYzMyODhkMTEzZj11YfSwiaWF0IjoxNjk5NDAyODI5fQ.whxjEIaryByJwzrrWLTmQ8zbEPI5UVAOdY8aJEp5nQs"
+      },
+      "data": null
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to fetch a list of your blogs. It includes an authentication token (JWT) in the 'auth-token' header to verify the user's identity. The request URL specifies the endpoint for fetching your blogs, and the query parameters 'page' and 'perPage' are used to control pagination."
+  },
+  {
+    "controller_description": "Create Authority",
+    "request": {
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/authority/create-authority",
+      "headers": null,
+      "data": {
+        "name": "sarika",
+        "email": "sarika@example.com",
+        "password": "password123",
+        "contactNumber": "1234567890",
+        "image": "authority_image.jpg"
+      }
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to create an authority. It does not include custom headers in the request. The request payload contains the authority's name, email, password, contact number, and image."
+  },
+  {
+    "controller_description": "Authority Login",
+    "request": {
+      "method": "POST",
+      "url": "http://localhost:3000/api/auth/authority/login",
+      "headers": null,
+      "data": {
+        "email": "sarika@example.com",
+        "password": "password123"
+      }
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to log in as an authority. It does not include custom headers in the request. The request payload contains the authority's name, email, password, contact number, and image."
+  },
+  {
+    "controller_description": "Fetch Authority Information",
+    "request": {
+      "method": "GET",
+      "url": "http://localhost:3000/api/auth/authority/fetch-authority",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpdHkiOnsiaWQiOiI2NTRhZTI2NGQ1ZTVlOWJhNTNmN2VkMjAifSwiaWF0IjoxNjk5NDA2NTcxfQ.noy7hiIwTKBjqyPXb8peQXgH-LuwPMtpL_cNFU0pBwc"
+      },
+      "data": null
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to fetch information about the authority. It includes an authentication token (JWT) in the 'auth-token' header to identify the authority. This is a GET request with no request payload."
+  },
+  {
+    "controller_description": "Fetch Non-Approved Blogs by Admin",
+    "request": {
+      "method": "GET",
+      "url": "http://localhost:3000/api/blog/admin/non-approved-blogs?page=1&perPage=1",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpdHkiOnsiaWQiOiI2NTRhZTI2NGQ1ZTVlOWJhNTNmN2VkMjAifSwiaWF0IjoxNjk5NDA2NDM2fQ.w2phHJJOP0w6q7dKydxGy8Un7FT1e7R0suIwE-_TmiE"
+      },
+      "data": null
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to fetch non-approved blogs by an admin. It includes an authentication token (JWT) in the 'auth-token' header to identify the admin. This is a GET request with query parameters 'page' and 'perPage' to control pagination."
+  },
+
+  {
+    "controller_description": "Change Blog Status by Admin",
+    "request": {
+      "method": "PUT",
+      "url": "http://localhost:3000/api/blog/admin/change-status",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpdHkiOnsiaWQiOiI2NTRhZTI2NGQ1ZTVlOWJhNTNmN2VkMjAifSwiaWF0IjoxNjk5NDA2NDM2fQ.w2phHJJOP0w6q7dKydxGy8Un7FT1e7R0suIwE-_TmiE"
+      },
+      "data": {
+        "_id": "654ad7993a6a7a2e3f0feabf",
+        "title": "Updated Blog Title",
+        "programmingLanguage": "JavaScript",
+        "description": "This is an updated blog description. Lorem ipsum...",
+        "image": "blog_image.jpg",
+        "hashtags": ["programming", "webdev"],
+        "authorName": "John Doe",
+        "likes": [],
+        "blogerid": "654ad3dc3288d113f11c417a",
+        "approved": false,
+        "comments": [],
+        "date": "2023-11-08T00:34:33.488Z",
+        "__v": 0
+      }
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to change the status of a blog by an admin. It includes an authentication token (JWT) in the 'auth-token' header to identify the admin. The request payload contains the updated information of the blog, including the blog's ID, title, programming language, description, image, hashtags, author name, likes, bloger ID, approval status, comments, and date."
+  },
+  {
+    "controller_description": "Update Blog by Admin",
+    "request": {
+      "method": "PUT",
+      "url": "http://localhost:3000/api/blog/admin/update-blog",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpdHkiOnsiaWQiOiI2NTRhZTI2NGQ1ZTVlOWJhNTNmN2VkMjAifSwiaWF0IjoxNjk9NDA2NDM2fQ.w2phHJJOP0w6q7dKydxGy8Un7FT1e7R0suIwE-_TmiE"
+      },
+      "data": {
+        "_id": "654ad7993a6a7a2e3f0feabf",
+        "title": "Updated Blog Title",
+        "programmingLanguage": "JavaScript",
+        "description": "This is an updated blog description. Lorem ipsum...",
+        "image": "blog_image.jpg",
+        "hashtags": ["programming", "webdev"],
+        "authorName": "John Doe",
+        "likes": [],
+        "blogerid": "654ad3dc3288d113f11c417a",
+        "approved": false,
+        "comments": [],
+        "date": "2023-11-08T00:34:33.488Z",
+        "__v": 0
+      }
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to update a blog by an admin. It includes an authentication token (JWT) in the 'auth-token' header to identify the admin. The request payload contains the updated information of the blog, including the blog's ID, title, programming language, description, image, hashtags, author name, likes, bloger ID, approval status, comments, and date."
+  },
+  {
+    "controller_description": "Delete Blog by Admin",
+    "request": {
+      "method": "DELETE",
+      "url": "http://localhost:3000/api/blog/admin/delete-blog",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpdHkiOnsiaWQiOiI2NTRhZTI2NGQ1ZTVlOWJhNTNmN2VkMjAifSwiaWF0IjoxNjk9NDA2NDM2fQ.w2phHJJOP0w6q7dKydxGy8Un7FT1e7R0suIwE-_TmiE"
+      },
+      "data": {
+        "_id": "654ad7993a6a7a2e3f0feabf",
+        "title": "Updated Blog Title",
+        "programmingLanguage": "JavaScript",
+        "description": "This is an updated blog description. Lorem ipsum...",
+        "image": "blog_image.jpg",
+        "hashtags": ["programming", "webdev"],
+        "authorName": "John Doe",
+        "likes": [],
+        "blogerid": "654ad3dc3288d113f11c417a",
+        "approved": false,
+        "comments": [],
+        "date": "2023-11-08T00:34:33.488Z",
+        "__v": 0
+      }
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to delete a blog by an admin. It includes an authentication token (JWT) in the 'auth-token' header to identify the admin. The request payload contains the information of the blog to be deleted, including its ID, title, programming language, description, image, hashtags, author name, likes, bloger ID, approval status, comments, and date."
+  },
+  {
+    "controller_description": "Like Blog by User",
+    "request": {
+      "method": "POST",
+      "url": "http://localhost:3000/api/blog/user/like",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjU0OTg4NDcxMjJmYmJiNDAwZjJiMDNhIn0sImlhdCI6MTY5OTMxODc4N30.yCM8eq9U-wJ1KlFZthmdnb39Fp0b8dzfxOuRu8CxnLM"
+      },
+      "data": {
+        "_id": "654adcc8dce6b6d9bb56c100",
+        "title": "Sample Blog Title -2",
+        "programmingLanguage": "JavaScript",
+        "description": "This is a sample blog description. It should be at least 15 characters long.",
+        "image": "https://example.com/sample-image.jpg",
+        "hashtags": ["programming", "coding", "sample"],
+        "authorName": "John Doe",
+        "likes": [],
+        "blogerid": "654ad3dc3288d113f11c417a",
+        "approved": false,
+        "comments": [],
+        "date": "2023-11-08T00:56:40.560Z",
+        "__v": 0
+      }
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to like a blog by a user. It includes an authentication token (JWT) in the 'auth-token' header to identify the user. The request payload contains information about the blog to be liked, including its ID, title, programming language, description, image, hashtags, author name, likes, bloger ID, approval status, comments, and date."
+  },
+  {
+    "controller_description": "Post Comment on Blog by User",
+    "request": {
+      "method": "POST",
+      "url": "http://localhost:3000/api/blog/user/comment?comment=this%20is%20awesom%20blog",
+      "headers": {
+        "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjU0OTg4NDcxMjJmYmJiNDA0ZjJiMDNhIn0sImlhdCI6MTY5OTMxODc4N30.yCM8eq9U-wJ1KlFZthmdnb39Fp0b8dzfxOuRu8CxnLM"
+      },
+      "data": {
+        "_id": "654adcc8dce6b6d9bb56c100",
+        "title": "Sample Blog Title -2",
+        "programmingLanguage": "JavaScript",
+        "description": "This is a sample blog description. It should be at least 15 characters long.",
+        "image": "https://example.com/sample-image.jpg",
+        "hashtags": ["programming", "coding", "sample"],
+        "authorName": "John Doe",
+        "likes": [],
+        "blogerid": "654ad3dc3288d113f11c417a",
+        "approved": false,
+        "comments": [],
+        "date": "2023-11-08T00:56:40.560Z",
+        "__v": 0
+      }
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to post a comment on a blog by a user. It includes an authentication token (JWT) in the 'auth-token' header to identify the user. The request payload contains information about the blog to which the comment is posted, including its ID, title, programming language, description, image, hashtags, author name, likes, bloger ID, approval status, comments, and date. The comment content is included in the URL as a query parameter."
+  },
+  {
+    "controller_description": "Retrieve Non-Authenticated Blogs",
+    "request": {
+      "method": "GET",
+      "url": "http://localhost:3000/api/non-auth/blogs?page=1&perPage=1&id=654adcc8dce6b6d9bb56c100&=",
+      "headers": null,
+      "data": null
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to retrieve non-authenticated blogs. It does not include custom headers in the request, and the request payload is empty. The URL includes query parameters for pagination and filtering, such as 'page,' 'perPage,' 'id,' and 'search.'"
+  },
+  {
+    "controller_description": "Retrieve Non-Authenticated Target Blog",
+    "request": {
+      "method": "GET",
+      "url": "http://localhost:3000/api/non-auth/target-blog/654adcc8dce6b6d9bb56c100?page=1&perPage=1&id=654adcc8dce6b6d9bb56c100",
+      "headers": null,
+      "data": null
+    },
+    "description": "This JavaScript code sends an XMLHttpRequest to retrieve a specific non-authenticated target blog with the ID '654adcc8dce6b6d9bb56c100.' It does not include custom headers in the request, and the request payload is empty. The URL includes query parameters for pagination, filtering, and specifying the target blog ID."
+  }
+]

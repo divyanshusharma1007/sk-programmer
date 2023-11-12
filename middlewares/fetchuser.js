@@ -1,19 +1,33 @@
-const jwt = require('jsonwebtoken')
-const Jwt_secrtet = "sk-programmer"
-fetchusers = (req, res, next) => {
-     //    Get the user form ;the jwt toke and id to req and id to object 
-     const token = req.header('auth-token');
-     if (!token) {
-          res.status(401).send({ error: "Please Authenticate using valid token" })
-     }
-     try {
-          // this is used to verify hte user 
-          const data = jwt.verify(token, Jwt_secrtet)
-          req.user = data.user;
-          next();
-     } catch (error) {
-          res.status(401).send({ error: "please authenticate using a valid token" })
-     }
+// Import the 'jsonwebtoken' library for working with JSON Web Tokens (JWT)
+const jwt = require('jsonwebtoken');
 
+// Define the JWT secret key (should be kept secure, not hard-coded)
+const Jwt_secret = "sk-programmer";
+
+// Define a middleware function 'fetchUsers' to verify and fetch user information from a JWT token
+const fetchUsers = (req, res, next) => {
+    // Get the JWT token from the request headers
+    const token = req.header('auth-token');
+
+    // Check if the token is missing
+    if (!token) {
+        return res.status(401).send({ error: "Please authenticate using a valid token" });
+    }
+
+    try {
+        // Verify the token using the secret key
+        const data = jwt.verify(token, Jwt_secret);
+
+        // Attach the user's information to the request object (assuming it's a 'user' in this case)
+        req.user = data.user;
+
+        // Continue with the next middleware or route handler
+        next();
+    } catch (error) {
+        // Handle token verification errors
+        return res.status(401).send({ error: "Please authenticate using a valid token" });
+    }
 }
-module.exports = fetchusers;
+
+// Export the 'fetchUsers' middleware for use in other parts of the application
+module.exports = fetchUsers;
